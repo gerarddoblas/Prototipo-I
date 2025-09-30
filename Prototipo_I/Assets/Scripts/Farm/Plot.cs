@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Plot : MonoBehaviour
 {
-    
     public PlantData plantData;
     private int currentStage;
     private float plantedTime;
@@ -78,8 +77,8 @@ public class Plot : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        PlantManager.Instance.AssignPlot(this);
+        
+        //PlantManager.Instance.AssignPlot(this);
     }
     
 }
