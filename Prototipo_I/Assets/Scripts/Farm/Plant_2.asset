@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f77446a2564ac40bcd0d1cfa4d33f6, type: 3}
   m_Name: Plant_2
   m_EditorClassIdentifier: 
-  plantName: 
+  plantName: Yivisaur
   growthStages: []
   growthTimes: []
   harvest: 0

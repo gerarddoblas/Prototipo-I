@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewPlant", menuName = "Farm/PlantData")]
-public class NewScriptableObjectScript : ScriptableObject
+public class PlantData : ScriptableObject
 {
     public string plantName;
     public GameObject[] growthStages;

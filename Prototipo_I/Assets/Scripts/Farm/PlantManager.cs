@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 public class PlantManager : MonoBehaviour
 {
+    
     public static PlantManager Instance;
     private List<Plot> plots = new List<Plot>();
 
-    private void Amake()
+    private void Awake()
     {
         Instance = this;
     }
 
-    public void AssginPlot(Plot plot)
+    public void AssignPlot(Plot plot)
     {
         if(!plots.Contains(plot))
         {
@@ -23,7 +24,7 @@ public class PlantManager : MonoBehaviour
     {
         foreach (var plot in plots)
         {
-            plot.CheckGrowth();
+           // plot.CheckGrowth();
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
