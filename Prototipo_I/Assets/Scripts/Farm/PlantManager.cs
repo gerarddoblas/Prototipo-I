@@ -24,12 +24,8 @@ public class PlantManager : MonoBehaviour
     {
         foreach (var plot in plots)
         {
-           // plot.CheckGrowth();
+            plot.CheckGrowth();
+            plot.UpdateUI();
         }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
 }

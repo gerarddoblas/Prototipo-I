@@ -1,18 +1,17 @@
 using UnityEngine;
 
-public class PlayerProve : MonoBehaviour
+public class PlantStatusUI : MonoBehaviour
 {
-    public Plot plot;
-    public PlantData plant;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        plot.Plant(plant);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //plot.CheckGrowth();
+       // transform.LookAt(Camera.main.transform);
+       // transform.Rotate(0, 180, 0);
     }
 }
