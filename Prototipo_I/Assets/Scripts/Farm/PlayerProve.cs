@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerProve : MonoBehaviour
 {
     public Plot plot;
-    public PlantData plant;
+    public Plant plant;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

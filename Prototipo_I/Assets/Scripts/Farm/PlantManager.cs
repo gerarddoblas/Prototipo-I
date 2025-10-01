@@ -6,6 +6,7 @@ public class PlantManager : MonoBehaviour
     
     public static PlantManager Instance;
     private List<Plot> plots = new List<Plot>();
+    private Plant plant;
 
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class PlantManager : MonoBehaviour
     {
         foreach (var plot in plots)
         {
-            plot.CheckGrowth();
+            //plant.Grow();
             plot.UpdateUI();
         }
     }
