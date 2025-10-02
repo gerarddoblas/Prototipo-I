@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 public class Plant
@@ -11,9 +12,10 @@ public class Plant
     public bool IsGrown => currentStage >= numStages;
 
     private float timeToGrow;
-    //public float TimeToGrow { get => timeToGrow; }
 
     public float currentTime => Mathf.Max(timeToGrow - DayNightCycle.Instance.DayTime, 0f);
+
+    public Action WhenFullGrow;
 
     private UnityEvent<float> MyEvent = new UnityEvent<float>();
 
@@ -38,9 +40,11 @@ public class Plant
         if (IsGrown)
         {
             Debug.Log("Crecio");
+          
             //UwU
         } else
         {
+            WhenFullGrow?.Invoke();
             Debug.Log("No Crecio");
             DayNightCycle.Instance.SubscribeTimedEvent(MyEvent, DayNightCycle.Instance.DayTime + timeToGrow);
         }

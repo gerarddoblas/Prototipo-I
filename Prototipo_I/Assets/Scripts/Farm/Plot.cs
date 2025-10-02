@@ -8,14 +8,14 @@ public class Plot : MonoBehaviour
 
     public bool IsPlanted => plant != null;
 
-    [SerializeField] private bool hasWater;
-   // public bool HasWater => hasWater;
+    private bool hasWater;
+    public bool HasWater => hasWater;
     private bool isFertilized;
     private float MultiplierSpeed;
 
     [SerializeField] private TextMeshProUGUI statusText;
 
-    public void Plant(Plant plant)
+    private void Plant(Plant plant)
     {
         if (IsPlanted)
         {
@@ -24,14 +24,16 @@ public class Plot : MonoBehaviour
         }
 
         this.plant = plant;
-        hasWater = true;
+        hasWater = false;
         isFertilized = false;
+
+        this.plant.WhenFullGrow += WhenPlantIsFullGrow;
 
         Debug.Log("Calling Growth");
         this.plant.Create();
     }
 
-    public void Harvest()
+    private void Harvest()
     {
         if (!IsPlanted || !this.plant.IsGrown)
         {
@@ -44,7 +46,7 @@ public class Plot : MonoBehaviour
         this.plant = null;
     }
 
-    public void UpdateUI()
+    private void UpdateUI()
     {
         if(statusText == null)
         {
@@ -58,14 +60,32 @@ public class Plot : MonoBehaviour
         }
         
         statusText.text = $"{plant.Name}\n" + 
-                          $"Tiempo: {plant.currentTime:F1}s\n";
+                          $"Tieme to Grow: {plant.currentTime:F1}s\n" +
+                          $"Watered: {(hasWater ? "Sí" : "No")}\n" +
+                          $"Fertilizada: {(isFertilized ? "Sí" : "No")}\n";
+    }
+
+    private void WhenPlantIsFullGrow()
+    {
+        hasWater = false;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Plant Bulbasaur = new Plant("Bulbasaur", 3, 25f);
         Plant(Bulbasaur);
-        PlantManager.Instance.AssignPlot(this);
+        //PlantManager.Instance.AssignPlot(this);
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            hasWater = true;
+            Debug.Log("XD");
+        }
+        UpdateUI();
+
+    }
+
 }

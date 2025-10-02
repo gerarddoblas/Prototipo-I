@@ -26,7 +26,8 @@ public class PlantManager : MonoBehaviour
         foreach (var plot in plots)
         {
             //plant.Grow();
-            plot.UpdateUI();
+            //plot.UpdateUI();
+           // plot.Water();
         }
     }
 }
