@@ -7,11 +7,13 @@ public class Plot : MonoBehaviour
     private Plant plant;
 
     public bool IsPlanted => plant != null;
-    public bool HasWater;
-    public bool isFertilized;
-    public float MultiplierSpeed;
 
-    public TextMeshProUGUI statusText;
+    [SerializeField] private bool hasWater;
+   // public bool HasWater => hasWater;
+    private bool isFertilized;
+    private float MultiplierSpeed;
+
+    [SerializeField] private TextMeshProUGUI statusText;
 
     public void Plant(Plant plant)
     {
@@ -22,7 +24,7 @@ public class Plot : MonoBehaviour
         }
 
         this.plant = plant;
-        HasWater = true;
+        hasWater = true;
         isFertilized = false;
 
         Debug.Log("Calling Growth");
@@ -54,14 +56,15 @@ public class Plot : MonoBehaviour
             statusText.text = "Anything :<";
             return;
         }
-
+        
         statusText.text = $"{plant.Name}\n" + 
-                          $"Tiempo: {plant.TimeToGrow:F1}s\n";
+                          $"Tiempo: {plant.currentTime:F1}s\n";
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Plant Bulbasaur = new Plant("Bulbasaur", 3, 25f);
+        Plant(Bulbasaur);
         PlantManager.Instance.AssignPlot(this);
     }
     
